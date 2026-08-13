@@ -57,3 +57,5 @@ This project would not be possible without half the internets web design tutoria
 As well as this, the client web side code alone is ~550 lines of code. And the server side code is ~330 lines. The code published has the "accounts.json" file empty and the "emails.json" file empty for security/privacy reasons
 
 This project is not compatible with SMTP or any other email protocal as of right now, feel free to add to the code and host your own email provider using UMTS.
+
+Ensure that you update/fill out all instances where a HTTP request is sent with your server address and on the server code "app.py" domain name needs to have: *{server address here} (example: *testing.co.uk).
