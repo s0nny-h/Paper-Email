@@ -2,7 +2,7 @@
 A fully custom Email web based client that uses a custom Email Transfer Protocol called UMTS (Unique Mail Transfer System) that handles emails being sent between email servers, hosted using GitHub Pages and a backend server that handles authentication and email transfer between servers and clients. As well as this the email address format uses: test*test.co.uk (this email is not registered)
 
 # Status
-This project is NOT COMPLETE and the code will not be provided until I find a permanant host for the backend code. The following features are incomplete:
+This project is NOT COMPLETE. The following features are incomplete:
 - Account Deletion,
 - Sending emails to external servers,
 - Receving emails from external servers,
@@ -54,6 +54,6 @@ If you would like an account removal as of right now please email me at: sonny-h
 # Project Notes
 This project would not be possible without half the internets web design tutorials and python flask tutorials, thank you to all inernet tutorials. 
 
-As well as this, the client web side code alone is ~550 lines of code. And the server side code is ~330 lines. Also, when the code is released to GitHub it will have the "accounts.json" file empty and the "emails.json" file empty for security/privacy reasons
+As well as this, the client web side code alone is ~550 lines of code. And the server side code is ~330 lines. The code published has the "accounts.json" file empty and the "emails.json" file empty for security/privacy reasons
 
 This project is not compatible with SMTP or any other email protocal as of right now, feel free to add to the code and host your own email provider using UMTS.
