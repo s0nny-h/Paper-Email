@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body onload="auth_check()">
+    <button id="home_page" onclick="home_page(event)">Return Home</button><Br>
+    <h1>Paper Email</h1>
+    <br>
+    <br>
+
+    <form>
+        <label>Send Email Section</label><br>
+        <label id="welcome">Connecting to server...</label><br>
+        <br>
+        <label>To:</label><br>
+        <input type="text" id="1"><br>
+        <br>
+        <br>
+        <label>Subject:</label><br>
+        <textarea id="3" rows="2" cols="39"></textarea>
+        <br>
+        <br>
+        <label>Message:</label><br>
+        <textarea id="2" rows="10" cols="39"></textarea>
+        <br>
+        <br>
+        <button onclick="compose_message(event)"; id="send">Send</button>
+    </form>
+
+    <script src="Email Transfer.js">
+    </script>
+
+</body>
+
+<footer>
+    <p>WARNING: THIS SITE DOES NOT ENCRPYT TRAFFIC, Site made by <a href="https://github.com/s0nny-h">Sonny Harrison</a></p>
+</footer>
+</html>
+

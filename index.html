@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body onload="auth_check()">
+    <br>
+    <h1>Paper Email</h1>
+    <br>
+    <br>
+
+    <form>
+        <label>Main Account Section</label><br>
+        <label id="welcome">Connecting to server...</label><br>
+        <br>
+        <button onclick="read_email(event)"; id="send">View Emails</button>
+        <br>
+        <br>
+        <button onclick="send_email(event)"; id="send">Send Email</button>
+        <br>
+        <br>
+        <button onclick="log_out(event)"; id="logout">Logout</button>
+        <br>
+        <br>
+        <button onclick="delete_account(event)"; id="delete">Delete Account</button>
+    </form>
+
+    <script src="account_managment.js">
+    </script>
+
+</body>
+
+<footer>
+    <p>WARNING: THIS SITE DOES NOT ENCRPYT TRAFFIC, Site made by <a href="https://github.com/s0nny-h">Sonny Harrison</a></p>
+</footer>
+</html>
+
