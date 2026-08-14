@@ -24,6 +24,7 @@ def main():
   length = 128
   email_domain = ""
   version = "UMTS VERSION 1.0"
+  PORT = os.environ.get("PORT)
 
   if request.method == "POST":
 
@@ -335,4 +336,4 @@ def main():
 # --------------------------------------------
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=20089, threaded=True)
+    app.run(host="0.0.0.0", port=PORT, threaded=True)
