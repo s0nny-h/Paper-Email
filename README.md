@@ -1,12 +1,14 @@
 # Paper Email
 A fully custom Email web based client that uses a custom Email Transfer Protocol called UMTS (Unique Mail Transfer System) that handles emails being sent between email servers, hosted using GitHub Pages and a backend server that handles authentication and email transfer between servers and clients. As well as this the email address format uses: test*test.co.uk (this email is not registered)
 
+# Note
+When signing up ensure that you put *main-backend-server-production.up.railway.app at the end of your username
+
 # Status
 This project is NOT COMPLETE. The following features are incomplete:
 - Account Deletion,
 - Sending emails to external servers (this is not tested so it may work),
 - Receving emails from external servers,
-- Currently searching/setting up a permanant server for the project to be hosted on.
 
 However emails can be sent and received if they are internal, and emails can be read. As well as this, the account login and signup system is fully complete.
 
