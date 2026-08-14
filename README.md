@@ -42,6 +42,8 @@ tag=send-email-external&receiver={receiver}&sender={sender}&message={message}&ti
 
 The UMTS versions must match for the transfer to be complete, as well as this all other server must reply with these exact responses.
 
+More infomation on UMTS can be found in the "UMTS.md" file.
+
 # Privacy
 
 This email client and service collects the following data on users:
