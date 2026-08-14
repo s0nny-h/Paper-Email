@@ -25,7 +25,7 @@ PORT = int(os.environ.get("PORT"))
 @cross_origin()
 def main():
   length = 128
-  email_domain = ""
+  email_domain = "*main-backend-server-production.up.railway.app"
   version = "UMTS VERSION 1.0"
 
   if request.method == "POST":
