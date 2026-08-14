@@ -18,13 +18,14 @@ import string
 app = Flask(__name__)
 CORS(app)
 
+PORT = int(os.environ.get("PORT"))
+
 @app.route("/", methods=["GET", "POST"], strict_slashes=False)
 @cross_origin()
 def main():
   length = 128
   email_domain = ""
   version = "UMTS VERSION 1.0"
-  PORT = int(os.environ.get("PORT"))
 
   if request.method == "POST":
 
