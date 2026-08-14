@@ -4,7 +4,7 @@ A fully custom Email web based client that uses a custom Email Transfer Protocol
 # Status
 This project is NOT COMPLETE. The following features are incomplete:
 - Account Deletion,
-- Sending emails to external servers,
+- Sending emails to external servers (this is not tested so it may work),
 - Receving emails from external servers,
 - Currently searching/setting up a permanant server for the project to be hosted on.
 
