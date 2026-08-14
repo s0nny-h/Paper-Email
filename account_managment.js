@@ -39,7 +39,7 @@ function auth_check() {
     else {
         const data = `tag=get-data&session_id=${session_id}&username=${username}`;
 
-        fetch("", {
+        fetch("https://main-backend-server-production.up.railway.app/", {
             method: "POST",
             headers: {
                 "Content-type": "text/plain"
@@ -83,7 +83,7 @@ function login(e) {
 
     document.cookie = ("username=" + username1)
 
-    fetch("", {
+    fetch("https://main-backend-server-production.up.railway.app/", {
         method: "POST",
         headers: {
             "Content-type": "text/plain"
@@ -120,7 +120,7 @@ function sign_up(e) {
 
     const true_details = `username=${username1}&password=${password1}&tag=account-signup`;
 
-    fetch("", {
+    fetch("https://main-backend-server-production.up.railway.app/", {
         method: "POST",
         headers: {
             "Content-type": "text/plain"
