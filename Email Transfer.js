@@ -39,7 +39,7 @@ function open_email(buttonClass) {
 
     const data = `tag=${tag}&username=${username}&email_id=${email_id}&session_token=${session_token}`;
 
-    fetch("", {
+    fetch("https://main-backend-server-production.up.railway.app/", {
         method: "POST",
         headers: {
             "Content-type": "text/plain"
@@ -121,7 +121,7 @@ function get_all_email(event) {
 
     const data = `tag=${tag}&username=${username}&session_token=${session_token}`;
 
-    fetch("", {
+    fetch("https://main-backend-server-production.up.railway.app/", {
         method: "POST",
         headers: {
             "Content-type": "text/plain"
@@ -197,7 +197,7 @@ function auth_check() {
     else {
         const data = `tag=get-data&session_id=${session_id}&username=${username}`;
 
-        fetch("", {
+        fetch("https://main-backend-server-production.up.railway.app/", {
             method: "POST",
             headers: {
                 "Content-type": "text/plain"
@@ -244,7 +244,7 @@ function compose_message(event) {
 
     const email = `tag=${tag}&receiver=${receiver}&sender=${sender}&message=${message}&time_sent=${time}&date_sent=${date}&subject=${subject}&session_token=${session_token}`;
 
-    fetch("", {
+    fetch("https://main-backend-server-production.up.railway.app/", {
         method: "POST",
         headers: {
             "Content-type": "text/plain"
