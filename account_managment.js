@@ -153,5 +153,5 @@ function home_page(event) {
 
 function delete_account(event) {
     if (event) event.preventDefault();
-    window.alert("Placeholder")
+    window.alert("To request a account termination and or data removal or updating then please contact me at: sonny-harrison@outlook.com")
 }
