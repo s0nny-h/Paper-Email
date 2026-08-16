@@ -10,6 +10,7 @@ from flask import Flask, jsonify, request, make_response
 from flask_cors import CORS, cross_origin
 from urllib.parse import parse_qs
 from urllib.parse import parse_qsl
+import mysql.connector
 import os
 import requests
 import json
@@ -27,6 +28,16 @@ def main():
   length = 128
   email_domain = "*main-backend-server-production.up.railway.app"
   version = "UMTS VERSION 1.0"
+  
+  sql_host1 = os.getenv("SQL_HOST")
+  sql_username1 = os.getenv("SQL_USER")
+  sql_password1 = os.getenv("SQL_PASS")
+  
+  sql_database = mysql.connector.connect(
+    host=sql_host1,
+    user=sql_username1,
+    password="sql_password1"
+  )
 
   if request.method == "POST":
 
