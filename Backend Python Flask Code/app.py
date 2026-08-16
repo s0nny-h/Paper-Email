@@ -32,12 +32,24 @@ def main():
   sql_host1 = os.getenv("SQL_HOST")
   sql_username1 = os.getenv("SQL_USER")
   sql_password1 = os.getenv("SQL_PASS")
+  sql_database_1 = os.getenv("SQL_DATABASE_1")
+  sql_database_2 = os.getenv("SQL_DATABASE_2")
   
-  sql_database = mysql.connector.connect(
+  acc_sql_database = mysql.connector.connect(
     host=sql_host1,
     user=sql_username1,
-    password="sql_password1"
+    password=sql_password1
+    database=sql_database_1
   )
+  
+  ema_sql_database = mysql.connector.connect(
+    host=sql_host1,
+    user=sql_username1,
+    password=sql_password1
+    database=sql_database_2
+  )
+  
+  acc_sql = acc_sql_database.cursor()
 
   if request.method == "POST":
 
@@ -49,10 +61,6 @@ def main():
     print(raw_text)
 
     if tag_value == "account-login":
-
-       with open("accounts.json", "r") as file:
-        account = json.load(file)
-
         # Extracts Data from HTTP 
 
        raw_text = request.data.decode('utf-8')
@@ -62,18 +70,18 @@ def main():
       
        username = clean_data.get('username', [None])[0]
        password = clean_data.get('password', [None])[0]
-
+      
+       sql_check_acc_user = acc_sql.execute("SELECT Username FROM 'Account_details' WHERE Username = {username}, Password = {password}")
+       sql_check_acc_pass = acc_sql.execute("SELECT Password FROM 'Account_details' WHERE Username = {username}, Password = {password}")
+      
        # Tests login details to try and find a match
 
-       if username in account:
-        if account[username]["password"] == password:
+       if sql_check_acc_user == username:
+        if sql_check_acc_pass == password:
           # Generates a new session ID
           new_session_id = ''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(length))
-
-          account[username]["active_session_id"] = new_session_id
-
-          with open("accounts.json", "w") as file:
-            json.dump(account, file, indent=4)
+          
+          acc_sql.execute("UPDATE 'Account_details' SET Session_ID = {new_session_id} WHERE Username = {username}, Password = {password}")
 
           print("Sending Response")
 
