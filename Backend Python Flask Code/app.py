@@ -71,8 +71,8 @@ def main():
        username = clean_data.get('username', [None])[0]
        password = clean_data.get('password', [None])[0]
       
-       sql_check_acc_user = acc_sql.execute(f"SELECT Username FROM Account_details WHERE Username = '{username}' AND Password = '{password}'")
-       sql_check_acc_pass = acc_sql.execute(f"SELECT Password FROM Account_details WHERE Username = '{username}' AND Password = '{password}'")
+       sql_check_acc_user = acc_sql.execute(f"SELECT Username FROM 'Account_details' WHERE Username = '{username}' AND Password = '{password}'")
+       sql_check_acc_pass = acc_sql.execute(f"SELECT Password FROM 'Account_details' WHERE Username = '{username}' AND Password = '{password}'")
       
        # Tests login details to try and find a match
 
