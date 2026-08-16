@@ -8,6 +8,7 @@ When signing up ensure that you put *main-backend-server-production.up.railway.a
 
 # Status
 This project is NOT COMPLETE. The following features are incomplete:
+- Currently shifting to MySQL database meaning that all backend code is currently non functional,
 - Sending emails to external servers (this is not tested so it may work),
 - Receving emails from external servers,
 
