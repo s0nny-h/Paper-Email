@@ -71,8 +71,8 @@ def main():
        username = clean_data.get('username', [None])[0]
        password = clean_data.get('password', [None])[0]
       
-       sql_check_acc_user = acc_sql.execute("SELECT Username FROM 'Account_details' WHERE Username = {username}, Password = {password}")
-       sql_check_acc_pass = acc_sql.execute("SELECT Password FROM 'Account_details' WHERE Username = {username}, Password = {password}")
+       sql_check_acc_user = acc_sql.execute("SELECT Username FROM Account_details WHERE Username = {username} AND Password = {password}")
+       sql_check_acc_pass = acc_sql.execute("SELECT Password FROM Account_details WHERE Username = {username} AND Password = {password}")
       
        # Tests login details to try and find a match
 
@@ -81,7 +81,7 @@ def main():
           # Generates a new session ID
           new_session_id = ''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(length))
           
-          acc_sql.execute("UPDATE 'Account_details' SET Session_ID = {new_session_id} WHERE Username = {username}, Password = {password}")
+          acc_sql.execute("UPDATE Account_details SET Session_ID = {new_session_id} WHERE Username = {username} AND Password = {password}")
 
           print("Sending Response")
 
