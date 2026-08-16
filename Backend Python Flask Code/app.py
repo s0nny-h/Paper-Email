@@ -33,7 +33,7 @@ def main():
   sql_username1 = os.getenv("SQL_USER")
   sql_password1 = os.getenv("SQL_PASS")
   sql_database_1 = os.getenv("SQL_DATABASE_1")
-  sql_database_2 = os.getenv("SQL_DATABASE_2")
+  #sql_database_2 = os.getenv("SQL_DATABASE_2")
   
   acc_sql_database = mysql.connector.connect(
     host=sql_host1,
@@ -42,12 +42,12 @@ def main():
     database=sql_database_1
   )
   
-  ema_sql_database = mysql.connector.connect(
-    host=sql_host1,
-    user=sql_username1,
-    password=sql_password1,
-    database=sql_database_2
-  )
+  #ema_sql_database = mysql.connector.connect(
+   # host=sql_host1,
+    #user=sql_username1,
+   # password=sql_password1,
+  #  database=sql_database_2
+  #)
   
   acc_sql = acc_sql_database.cursor()
 
