@@ -10,6 +10,7 @@ from flask import Flask, jsonify, request, make_response
 from flask_cors import CORS, cross_origin
 from urllib.parse import parse_qs
 from urllib.parse import parse_qsl
+import time
 import mysql.connector
 import os
 import requests
@@ -72,6 +73,7 @@ def main():
        password = clean_data.get('password', [None])[0]
       
        sql_check_acc_user = acc_sql.execute(f"SELECT Username FROM `Account_details` WHERE Username = '{username}' AND Password = '{password}'")
+       time.sleep(2)
        sql_check_acc_pass = acc_sql.execute(f"SELECT Password FROM `Account_details` WHERE Username = '{username}' AND Password = '{password}'")
       
        # Tests login details to try and find a match
