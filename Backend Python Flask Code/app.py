@@ -38,8 +38,8 @@ def main():
   acc_sql_database = mysql.connector.connect(
     host=sql_host1,
     user=sql_username1,
-    password=sql_password1
-    #database=sql_database_1
+    password=sql_password1,
+    database=sql_database_1
   )
   
   #ema_sql_database = mysql.connector.connect(
