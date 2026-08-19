@@ -76,10 +76,10 @@ def main():
       
        # Tests login details to try and find a match
 
-       print(sql_check_acc_user)
+       result_user = sql_check_acc_user.fetchone()
 
-       if sql_check_acc_user == username:
-        if sql_check_acc_pass == password:
+       if result_user == username:
+        if 1 == 1:
           # Generates a new session ID
           new_session_id = ''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(length))
           
