@@ -76,6 +76,8 @@ def main():
       
        # Tests login details to try and find a match
 
+       print(sql_check_acc_user)
+
        if sql_check_acc_user == username:
         if sql_check_acc_pass == password:
           # Generates a new session ID
