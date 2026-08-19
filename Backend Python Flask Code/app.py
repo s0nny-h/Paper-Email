@@ -78,6 +78,8 @@ def main():
 
        result_user = acc_sql.fetchone()
 
+       print(result_user)
+
        if result_user == username:
         if 1 == 1:
           # Generates a new session ID
