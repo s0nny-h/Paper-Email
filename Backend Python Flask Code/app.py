@@ -103,6 +103,8 @@ def main():
       result_check = acc_sql.fetchone()
 
       if result_check is None:
+        print("No duplicates")
+      else:
         result_check_con = result_check[0]
 
       if username == result_check_con:
