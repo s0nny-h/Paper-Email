@@ -93,17 +93,16 @@ def main():
     elif tag_value == "account-signup":
       # Creates a new User
 
-      with open("accounts.json", "r") as file:
-        account = json.load(file)
-
       raw_text = request.data.decode('utf-8')
-
       clean_data = parse_qs(raw_text)
 
       username = clean_data.get('username', [None])[0]
       password = clean_data.get('password', [None])[0]
 
-      if username in account:
+      sql_check_acc_user_taken = acc_sql.execute(f"SELECT Username FROM `Account_details` WHERE Username = '{username}'")
+      result_check = acc_sql.fetchone()[0]
+
+      if username == result_check:
         print("Error Creating User: Username Taken")
         return jsonify({"status": "ERROR", "message": "USERNAME TAKEN"}), 500
 
@@ -111,18 +110,12 @@ def main():
         print("Error Creating User: Invaild Username")
         return jsonify({"status": "ERROR", "message": "INVAILD USERNAME"}), 401
 
-      else:
-        new_user = {
-          "password": password,
-          "active_session_id": ""
-        }
-
-        account[username] = new_user
-
-        with open("accounts.json", "w") as file:
-          json.dump(account, file, indent=4)
-
-        return jsonify({"status": "WORK", "message": "CREATED USER"}), 200
+      cmd = "INSERT INTO Account_details (Username, Password, Session_ID) VALUES (%s, %s)"
+      cmd_val = (username, password, "")
+      acc_sql.execute(cmd, cmd_val)
+      
+      acc_sql_database.commit()
+      return jsonify({"status": "WORK", "message": "CREATED USER"}), 200
 
     elif tag_value == "send-email":
 
