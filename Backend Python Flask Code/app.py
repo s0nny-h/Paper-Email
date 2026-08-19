@@ -103,7 +103,7 @@ def main():
       result_check = acc_sql.fetchone()
 
       if result_check is None:
-        print("No duplicates")
+        result_check_con = ""
       else:
         result_check_con = result_check[0]
 
