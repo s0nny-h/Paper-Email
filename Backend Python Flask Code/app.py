@@ -115,7 +115,7 @@ def main():
         print("Error Creating User: Invaild Username")
         return jsonify({"status": "ERROR", "message": "INVAILD USERNAME"}), 401
 
-      cmd = "INSERT INTO Account_details (Username, Password, Session_ID) VALUES (%s, %s)"
+      cmd = "INSERT INTO Account_details (Username, Password, Session_ID) VALUES (%s, %s, %s)"
       cmd_val = (username, password, "")
       acc_sql.execute(cmd, cmd_val)
       
