@@ -151,9 +151,9 @@ def main():
           result_ssid = acc_sql.fetchone()[0]
           
           if result_ssid == token:
-            cmd = "INSERT INTO emails (id, receiver, timestamp, date_sent, message, subject, sender) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            cmd_val = (email_id, receiver, time, date, message, subject, sender)
-            acc_sql.execute(cmd, cmd_val)
+            cmd1 = "INSERT INTO emails (id, receiver, timestamp, date_sent, message, subject, sender) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            cmd_val1 = (email_id, receiver, time, date, message, subject, sender)
+            acc_sql.execute(cmd1, cmd_val1)
 
             print("Saved Email")
             return jsonify({"status": "WORK", "message": "SAVED EMAIL"}), 200
