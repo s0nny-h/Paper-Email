@@ -100,9 +100,12 @@ def main():
       password = clean_data.get('password', [None])[0]
 
       sql_check_acc_user_taken = acc_sql.execute(f"SELECT Username FROM `Account_details` WHERE Username = '{username}'")
-      result_check = acc_sql.fetchone()[0]
+      result_check = acc_sql.fetchone()
 
-      if username == result_check:
+      if result_check is None:
+        result_check_con = result_check[0]
+
+      if username == result_check_con:
         print("Error Creating User: Username Taken")
         return jsonify({"status": "ERROR", "message": "USERNAME TAKEN"}), 500
 
