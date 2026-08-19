@@ -280,7 +280,6 @@ def main():
         result_check = acc_sql.fetchone()[0]
       
         if result_check == token:
-        if account[username]["active_session_id"] == token:
 
           with open("emails.json", "r") as file:
             email_all = json.load(file)
