@@ -141,30 +141,19 @@ def main():
  
       email_id = date + "#" + time + "#" + unique_string + "#" + email_domain 
 
-      with open("accounts.json", "r") as file:
-        account = json.load(file)
+      sql_check_acc_user = acc_sql.execute(f"SELECT Username FROM `Account_details` WHERE Username = '{sender}' AND Session_ID = '{token}'")
+      result_user = acc_sql.fetchone()[0]
 
       if email_domain in receiver:
 
-        if sender in account:
-          if account[sender]["active_session_id"] == token:
-
-            with open("emails.json", "r") as file:
-              emailsfile = json.load(file)
-
-            new_email = {
-                "receiver": receiver,
-                "sender": sender,
-                "timestamp": time,
-                "date-sent": date,
-                "message": message,
-                "subject": subject
-              }
-
-            emailsfile[email_id] = new_email
-
-            with open("emails.json", "w") as file:
-              json.dump(emailsfile, file, indent=4)
+        if sender == result_user:
+          sql_check_acc_ssid = acc_sql.execute(f"SELECT Session_ID FROM `Account_details` WHERE Username = '{sender}' AND Session_ID = '{token}'")
+          result_ssid = acc_sql.fetchone()[0]
+          
+          if result_ssid == token:
+            cmd = "INSERT INTO emails (id, receiver, timestamp, date_sent, message, subject, sender) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            cmd_val = (email_id, receiver, time, date, message, subject, sender)
+            acc_sql.execute(cmd, cmd_val)
 
             print("Saved Email")
             return jsonify({"status": "WORK", "message": "SAVED EMAIL"}), 200
@@ -254,11 +243,19 @@ def main():
       token = clean_data.get('session_id', [None])[0]
       username = clean_data.get('username', [None])[0]
 
-      with open("accounts.json", "r") as file:
-        account = json.load(file)
+      sql_check_acc_user_taken = acc_sql.execute(f"SELECT Username FROM `Account_details` WHERE Username = '{username}'")
+      result_check = acc_sql.fetchone()
 
-      if username in account:
-        if account[username]["active_session_id"] == token:
+      if result_check is None:
+        result_check_con = ""
+      else:
+        result_check_con = result_check[0]
+
+      if username == result_check_con:
+        sql_check_acc_user_taken = acc_sql.execute(f"SELECT Session_ID FROM `Account_details` WHERE Session_ID = '{token}' AND Username = '{username}'")
+        result_check = acc_sql.fetchone()[0]
+      
+        if result_check == token:
           return jsonify({"name": username}), 200
         else:
           return jsonify({"name": ""}), 200
@@ -270,10 +267,19 @@ def main():
       token = clean_data.get('session_token', [None])[0]
       username = clean_data.get('username', [None])[0]
 
-      with open("accounts.json", "r") as file:
-        account = json.load(file)
+      sql_check_acc_user_taken = acc_sql.execute(f"SELECT Username FROM `Account_details` WHERE Username = '{username}'")
+      result_check = acc_sql.fetchone()
 
-      if username in account:
+      if result_check is None:
+        result_check_con = ""
+      else:
+        result_check_con = result_check[0]
+
+      if username == result_check_con:
+        sql_check_acc_user_taken = acc_sql.execute(f"SELECT Session_ID FROM `Account_details` WHERE Session_ID = '{token}' AND Username = '{username}'")
+        result_check = acc_sql.fetchone()[0]
+      
+        if result_check == token:
         if account[username]["active_session_id"] == token:
 
           with open("emails.json", "r") as file:
