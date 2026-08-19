@@ -62,10 +62,7 @@ def main():
     print(raw_text)
 
     if tag_value == "account-login":
-        # Extracts Data from HTTP 
-
        raw_text = request.data.decode('utf-8')
-
        clean_data = parse_qs(raw_text)
 
       
@@ -73,23 +70,17 @@ def main():
        password = clean_data.get('password', [None])[0]
       
        sql_check_acc_user = acc_sql.execute(f"SELECT Username FROM `Account_details` WHERE Username = '{username}' AND Password = '{password}'")
-      
-       # Tests login details to try and find a match
-
        result_user = acc_sql.fetchone()[0]
-       
-
-       print(result_user)
-
+      
        if result_user == username:
         if 1 == 1:
           # Generates a new session ID
           new_session_id = ''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(length))
           
           acc_sql.execute(f"UPDATE `Account_details` SET Session_ID = '{new_session_id}' WHERE Username = '{username}' AND Password = '{password}'")
+          acc_sql_database.commit()
 
           print("Sending Response")
-
           return jsonify({"session_id": new_session_id}), 200
 
         else:
