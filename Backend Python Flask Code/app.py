@@ -76,7 +76,8 @@ def main():
       
        # Tests login details to try and find a match
 
-       result_user = acc_sql.fetchone()
+       result_user_1 = acc_sql.fetchone()
+       result_user = text.translate(str.maketrans("", "", "(',)"))
 
        print(result_user)
 
