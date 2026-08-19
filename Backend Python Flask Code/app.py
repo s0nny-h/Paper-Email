@@ -76,7 +76,7 @@ def main():
       
        # Tests login details to try and find a match
 
-       result_user = sql_check_acc_user.fetchone()
+       result_user = acc_sql.fetchone()
 
        if result_user == username:
         if 1 == 1:
