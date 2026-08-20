@@ -154,6 +154,7 @@ def main():
             cmd1 = "INSERT INTO emails (id, receiver, timestamp, date_sent, message, subject, sender) VALUES (%s, %s, %s, %s, %s, %s, %s)"
             cmd_val1 = (email_id, receiver, time, date, message, subject, sender)
             acc_sql.execute(cmd1, cmd_val1)
+            acc_sql_database.commit()
 
             print("Saved Email")
             return jsonify({"status": "WORK", "message": "SAVED EMAIL"}), 200
