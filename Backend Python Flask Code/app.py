@@ -282,22 +282,13 @@ def main():
       
         if result_check == token:
 
-          with open("emails.json", "r") as file:
-            email_all = json.load(file)
-
-          all_id = []
-          target_receiver = username
-
-          for key, value in email_all.items():
-            if value.get("receiver") == target_receiver:
-              all_id.append(key)
+          all_id = acc_sql.execute(f"SELECT id FROM `Account_details` WHERE receiver = '{username}")
 
           found_all = 0
           length_1 = (len(all_id))     
           temp = 0
           all_emails = {}
 
-      
           while temp != length_1:
             temp_id = all_id[temp]
             temp_email = email_all[temp_id]
