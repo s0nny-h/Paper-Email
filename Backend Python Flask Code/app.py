@@ -283,14 +283,15 @@ def main():
         if result_check == token:
 
           all_id = acc_sql.execute(f"SELECT id FROM `emails` WHERE receiver = '{username}'")
+          all_id_sanitised = acc_sql.fetchone()[0]
 
           found_all = 0
-          length_1 = (len(all_id))     
+          length_1 = (len(all_id_sanitised))     
           temp = 0
           all_emails = {}
 
           while temp != length_1:
-            temp_id = all_id[temp]
+            temp_id = all_id_sanitised[temp]
             temp_email = email_all[temp_id]
             
             all_emails[temp_id] = temp_email
@@ -300,7 +301,7 @@ def main():
           final_message = {}
 
           other_info = {"total_num_emails": length_1}
-          other_info2 = {"all_email_id": all_id}
+          other_info2 = {"all_email_id": all_id_sanitised}
 
           final_message = other_info | other_info2
           final_message = final_message | all_emails
