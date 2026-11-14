@@ -285,7 +285,7 @@ def main():
           all_id = acc_sql.execute(f"SELECT id FROM `emails` WHERE receiver = '{username}'")
           all_id_sanitised = acc_sql.fetchone()[0]
           
-          email_det = acc_sql.execute(f"SELECT sender, subject FROM `emails` WHERE receiver = '{username}'")
+          email_det = acc_sql.execute(f"SELECT id, sender, subject FROM `emails` WHERE receiver = '{username}'")
           email_det_sanitised = acc_sql.fetchone()[0]
 
           found_all = 0
