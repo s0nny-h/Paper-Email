@@ -282,7 +282,7 @@ def main():
       
         if result_check == token:
 
-          all_id = acc_sql.execute(f"SELECT id FROM `emails` WHERE receiver = '{username}")
+          all_id = acc_sql.execute(f"SELECT id FROM `emails` WHERE receiver = '{username}'")
 
           found_all = 0
           length_1 = (len(all_id))     
