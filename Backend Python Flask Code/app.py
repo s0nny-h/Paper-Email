@@ -284,6 +284,9 @@ def main():
 
           all_id = acc_sql.execute(f"SELECT id FROM `emails` WHERE receiver = '{username}'")
           all_id_sanitised = acc_sql.fetchone()[0]
+          
+          email_det = acc_sql.execute(f"SELECT sender, subject FROM `emails` WHERE receiver = '{username}'")
+          email_det_sanitised = acc_sql.fetchone()[0]
 
           found_all = 0
           length_1 = (len(all_id_sanitised))     
@@ -292,7 +295,7 @@ def main():
 
           while temp != length_1:
             temp_id = all_id_sanitised[temp]
-            temp_email = email_all[temp_id]
+            temp_email = email_det_sanitised[temp_id]
             
             all_emails[temp_id] = temp_email
             temp = temp + 1
